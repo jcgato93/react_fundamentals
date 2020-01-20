@@ -25,7 +25,7 @@ class Badge extends React.Component {
 
       <div className="Badge__section-info">
         <h3>{this.props.title}</h3>
-        <a href={this.props.webPage} target="_blank">Sitio web</a>
+        <a href={this.props.webPage} rel="noopener noreferrer" target="_blank">Sitio web</a>
       </div>
 
       <div className="Badge__footer">#platziconf</div>
