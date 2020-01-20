@@ -7,4 +7,4 @@ import Badge from './components/Badge';
 
 const container = document.getElementById('app');
 
-ReactDOM.render(<Badge />, container);
+ReactDOM.render(<Badge firstName="Juan" lastName="Castillo" title="FullStack Developer" webPage="https://juan-castillo.web.app/" />, container);
