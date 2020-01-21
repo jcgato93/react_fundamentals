@@ -7,32 +7,54 @@ import BadgeForm from '../components/BadgeForm';
 import './styles/BadgeNew.css';
 
 
-class BadgeNew extends React.Component{
-    render(){
-        return (
-            <div>
-                <Navbar />
-                <div className="BadgeNew__hero">
-                    <img className="img-fluid" src={header} alt="Logo" />
-                </div>
-            
-
-            <div className="container">
-                <div className="row">
-                    <div className="col-6">
-                        <Badge firstName="Juan" 
-                        lastName="Castillo" 
-                        webPage="http://juan-castillo.web.app/"
-                        title="FullStack Developer" />
-                    </div>
-                    <div className="col-6">
-                        <BadgeForm />
-                    </div>
-                </div>
-            </div>
-            </div>
-        )
+class BadgeNew extends React.Component {
+  state = {
+    form: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      jobTitle: ""
     }
+  };
+
+  handleChange = e => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <div className="BadgeNew__hero">
+          <img className="img-fluid" src={header} alt="Logo" />
+        </div>
+
+        <div className="container">
+          <div className="row">
+            <div className="col-6">
+              <Badge
+                firstName={this.state.form.firstName}
+                lastName={this.state.form.lastName}
+                webPage="http://juan-castillo.web.app/"
+                title={this.state.form.jobTitle}
+              />
+            </div>
+            <div className="col-6">
+              <BadgeForm
+                onChange={this.handleChange}
+                formValues={this.state.form}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default BadgeNew;
