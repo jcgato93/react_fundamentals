@@ -15,3 +15,54 @@ Las aplicaciones que se trabajan en React son llamadas single page apps. Esto es
     - Switch: Dentro de Switch solamente van elementos de Route. Switch se asegura que solamente un Route se renderize.
     
     - Link: Toma el lugar del elemento "a href", evita que se recargue la página completamente y actualiza la URL.
+
+
+### Ejemplo de configuración de dos rutas
+
+```javascript
+
+// src/components/App.js
+import React from 'react';
+import { BrowserRouter, Route , Switch} from "react-router-dom";
+
+import Badges from '../pages/Badges';
+import BadgeNew from '../pages/BadgeNew';
+
+function App(){
+    return (
+      <BrowserRouter>
+        //Para que solo renderice cuando concuerda la ruta
+        <Switch> 
+          /*
+            exact : para que sea la ruta exacta
+            path : url con la que hara el macth
+            component : componente que debe renderizar
+          */
+          <Route exact path="/badges" component={Badges}></Route>
+          <Route exact path="/badges/new" component={BadgeNew}></Route>
+        </Switch>
+      </BrowserRouter>
+    );
+}
+
+export default App;
+
+```
+
+```javascript
+// src/index.js
+import App from './components/App';
+
+const container = document.getElementById('app');
+
+ReactDOM.render(<App /> , container);
+```
+
+```javascript
+// Para ir de una pagina a otra utilizando react router
+import { Link } from 'react-router-dom';
+
+ <Link to="/badges/new" className="btn btn-primary">
+              New Badge
+ </Link>
+```
