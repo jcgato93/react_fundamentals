@@ -1,10 +1,11 @@
 import React from 'react';
 
-import header from '../images/badge-header.svg';
-import Navbar from '../components/Navbar';
+import header from '../images/platziconf-logo.svg';
 import Badge from "../components/Badge";
 import BadgeForm from '../components/BadgeForm';
 import './styles/BadgeNew.css';
+
+import api from '../api';
 
 
 class BadgeNew extends React.Component {
@@ -26,6 +27,20 @@ class BadgeNew extends React.Component {
     });
   };
 
+
+  handleSubmit = async e =>{
+    e.preventDefault();
+    this.setState({ loading: true, error: null })
+
+    try {
+      await api.badges.create(this.state.form)
+      this.setState({ loading: false })
+    } catch (error) {
+      console.error(error);            
+      this.setState({ loading: false, error: error })
+    }
+  }
+
   render() {
     return (
       <div>        
@@ -37,15 +52,16 @@ class BadgeNew extends React.Component {
           <div className="row">
             <div className="col-6">
               <Badge
-                firstName={this.state.form.firstName}
-                lastName={this.state.form.lastName}
+                firstName={this.state.form.firstName || ' FIRST NAME'}
+                lastName={this.state.form.lastName || 'LAST NAME'}
                 webPage="http://juan-castillo.web.app/"
-                title={this.state.form.jobTitle}
+                title={this.state.form.jobTitle || 'JOB TITLE'}
               />
             </div>
             <div className="col-6">
               <BadgeForm
                 onChange={this.handleChange}
+                onSubmit={this.handleSubmit}
                 formValues={this.state.form}
               />
             </div>
