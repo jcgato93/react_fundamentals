@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import BadgeList from '../components/BadgesList';
+import PageLoading from '../components/PageLoading';
+
 import './styles/Badges.css';
 import logo from '../images/badge-header.svg';
 
@@ -61,7 +63,7 @@ class Badges extends React.Component {
     console.log('2/4. Render')
 
     if(this.state.loading === true){
-      return 'Loading ...';
+      return <PageLoading />
     }
 
     if(this.state.error){
