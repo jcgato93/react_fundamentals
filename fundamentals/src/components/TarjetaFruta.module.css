@@ -1,4 +1,4 @@
-.TarjetaFruta {
+.card {
     border: 1px solid black;
     margin-bottom: 1em;
     border-radius: 0.5em;
@@ -9,7 +9,7 @@
 }
 
 
-.TarjetaFruta-activa {
+.card-active {
     border: 1px solid black;
     margin-bottom: 1em;
     border-radius: 0.5em;
