@@ -27,7 +27,7 @@ class Profile extends React.Component {
 
         return (
             <div>
-                <h1>Nombre</h1>
+                <h1>{name}</h1>
                 <p>
                    {bio}
                 </p>
