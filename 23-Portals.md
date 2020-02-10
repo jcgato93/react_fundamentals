@@ -1,16 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import TarjetaFruta  from "./components/TarjetaFruta";
+# Portals 
 
+Los portals fueron introducidos en la version 16 y nos permiten crear
+componentes fuera del nodo raiz de la aplicacion.
 
-// const App = () => (
-//     <div>
-//       <TarjetaFruta name={'Sandia'} price={5.00} />
-//       <TarjetaFruta name={'Naranja'} price={1.50} />
-//       <TarjetaFruta name='Kiwi' price={3.30} />
-//     </div>
-// )
+Comunmente se utiliza para crear modales
 
+1. Agregar un "div" con id en el index.html
+
+```html
+    <div id="root"></div>
+    <!-- Modal -->
+    <div id="modal-root"></div>
+```
+
+2. Crear el portal
+
+```jsx
 class PortalModal extends React.Component {
   render() {
     return ReactDOM.createPortal((
@@ -27,7 +32,7 @@ class App  extends React.Component {
       <div>
         <PortalModal>
           <h1>
-            Hola desde un portal modal 😃
+            Hola desde un portal modal 😁
           </h1>
         </PortalModal>
       </div>
@@ -36,4 +41,4 @@ class App  extends React.Component {
 }
 
 export default App;
-  
+```
