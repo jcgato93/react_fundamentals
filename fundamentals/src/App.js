@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TarjetaFruta  from "./components/TarjetaFruta";
-
+import Graficas from './components/charts';
 
 // const App = () => (
 //     <div>
@@ -25,11 +25,12 @@ class App  extends React.Component {
   render() {
     return (
       <div>
-        <PortalModal>
+        {/* <PortalModal>
           <h1>
             Hola desde un portal modal 😃
           </h1>
-        </PortalModal>
+        </PortalModal> */}
+        <Graficas />
       </div>
     )
   }
