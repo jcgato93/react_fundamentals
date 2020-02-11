@@ -145,3 +145,40 @@ class App extends Component {
 export default App
 ```
 
+
+## Reenvio de propiedad especial ref con forwardref
+
+Este seria util cuando queremos una referencia de un elemento hijo desde un padre
+React ya nos da una funcion para pasar esta referencia con el uso de 
+React.forwardRef 
+
+Nota : React.forwardRef  solo funciona para componentes funcionales y no para clases
+
+```jsx
+import React, { Component } from 'react'
+
+const FancyInput = React.forwardRef((props, ref) => (
+  <div>
+    <input type="text" ref={ref} />
+  </div>
+))
+
+class App extends Component {
+  entrada = React.createRef()
+
+  componentDidMount () {
+    console.log(this.entrada)
+  }
+
+  render () {
+
+    return (
+      <div>
+        <FancyInput ref={this.entrada} />
+      </div>
+    )
+  }
+}
+
+export default App
+```
